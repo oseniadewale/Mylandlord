@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo isset($page_title) ? $page_title : 'Index Page'; ?></title>
 
-  <link rel="stylesheet" href="<?php echo $base_url; ?>/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="<?php echo $base_url; ?>/Myfonts/fontawesome-free-6.6.0-web/css/all.css">
-  <link rel="stylesheet" href="<?php echo $base_url; ?>/Myfonts/fontawesome-free-6.6.0-web/css/fontawesome.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="Myfonts/fontawesome-free-6.6.0-web/css/all.css">
+  <link rel="stylesheet" href="Myfonts/fontawesome-free-6.6.0-web/css/fontawesome.css">
 
   <?php if (isset($page_styles)) echo $page_styles; ?>
 

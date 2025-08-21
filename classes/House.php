@@ -77,68 +77,81 @@ class House extends Db
     
 
     public function getAvailableHouses() {
-    $conn = $this->connect();
+        $conn = $this->connect();
 
- $sql =  "SELECT 
-    house.*, 
-    states.state_name, 
-    local_governments.lg_name, 
-    landlord.landlord_username
-FROM house
-JOIN states 
-    ON house.state_id = states.state_id
-JOIN local_governments 
-    ON house.lg_id = local_governments.lg_id
-JOIN landlord 
-    ON house.landlord_id = landlord.landlord_id
-WHERE house.availability_status = 'available' ";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $houses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $houses;
-}
-
-public function getRecentAvailableHouses($limit = 10) {
-    $sql = "SELECT * FROM house 
-            WHERE availability_status = 'available' 
-            ORDER BY house_id DESC 
-            LIMIT ?";
-    
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->bindValue(1, (int)$limit, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-
-
-public function getPaginatedHouses($limit, $offset) {
-    $stmt = $this->connect()->prepare("
-        SELECT house.*, landlord_username, state_name, lg_name
+        $sql =  "SELECT 
+            house.*, 
+            states.state_name, 
+            local_governments.lg_name, 
+            landlord.landlord_username
         FROM house
-        LEFT JOIN landlord ON house.landlord_id = landlord.landlord_id
-        LEFT JOIN states ON house.state_id = states.state_id
-        LEFT JOIN local_governments ON house.lg_id = local_governments.lg_id
-        ORDER BY house.house_id DESC
-        LIMIT ? OFFSET ?
-    ");
-    $stmt->bindValue(1, $limit, PDO::PARAM_INT);
-    $stmt->bindValue(2, $offset, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        JOIN states 
+            ON house.state_id = states.state_id
+        JOIN local_governments 
+            ON house.lg_id = local_governments.lg_id
+        JOIN landlord 
+            ON house.landlord_id = landlord.landlord_id
+        WHERE house.availability_status = 'available' ";
 
-public function countAllHouses() {
-    $stmt = $this->connect()->query("SELECT COUNT(*) AS total FROM house");
-    return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-}
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $houses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-public function deleteHouse($house_id) {
-    $stmt = $this->connect()->prepare("DELETE FROM house WHERE house_id = ?");
-    return $stmt->execute([$house_id]);
-}
+            return $houses;
+    }
+
+    public function getRecentAvailableHouses($limit = 10) {
+        $sql = "SELECT * FROM house 
+                WHERE availability_status = 'available' 
+                ORDER BY house_id DESC 
+                LIMIT ?";
+        
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->bindValue(1, (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+    public function getPaginatedHouses($limit, $offset) {
+        $stmt = $this->connect()->prepare("
+            SELECT house.*, landlord_username, state_name, lg_name
+            FROM house
+            LEFT JOIN landlord ON house.landlord_id = landlord.landlord_id
+            LEFT JOIN states ON house.state_id = states.state_id
+            LEFT JOIN local_governments ON house.lg_id = local_governments.lg_id
+            ORDER BY house.house_id DESC
+            LIMIT ? OFFSET ?
+        ");
+        $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+        $stmt->bindValue(2, $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function countAllHouses() {
+        $stmt = $this->connect()->query("SELECT COUNT(*) AS total FROM house");
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
+    public function deleteHouse($house_id) {
+        $stmt = $this->connect()->prepare("DELETE FROM house WHERE house_id = ?");
+        return $stmt->execute([$house_id]);
+    }
+
+    public function updateHouseStatus($house_id, $house_payment, $availability_status) {
+        $sql = "UPDATE house 
+                SET house_payment = ?, availability_status = ? 
+                WHERE house_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        try {
+            return $stmt->execute([$house_payment, $availability_status, $house_id]);
+        } catch (PDOException $e) {
+            die("DB Error: " . $e->getMessage());
+        }
+    }
+
 
 
 
