@@ -1,44 +1,38 @@
 <?php
 session_start();
 include_once("classes/Payment.php");
+include_once("classes/House.php");
 
-// 1. Collect tenant & house info (store them in session or hidden form during initialization)
-$tenant_id = $_SESSION['tenant_id'] ?? null;
-$house_id  = $_SESSION['house_id'] ?? null;
-
-// 2. Get reference from Paystack redirect URL
+// Get reference from URL
 if (!isset($_GET['reference'])) {
-    die("❌ No reference supplied by Paystack");
+    alert('Payment transaction ID missing. Do try again.');
+    header();
+    die(" No reference supplied.");
 }
-$reference = $_GET['reference'];
+$reference = $_GET['reference']; //paystack transaction ID
+$tenant_id = $_GET['tenant_id'];
+$house_id  = $_GET['house_id'];
+$amount = $_GET['amount']; // in Naira
 
-// 3. Verify transaction with Paystack
-$curl = curl_init();
-curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.paystack.co/transaction/verify/" . $reference,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER => [
-        "Authorization: sk_test_a448a17b91a165c065c90489b8254cf605ee75de", // 🔑 Replace with your Paystack secret key
-        "Cache-Control: no-cache",
-    ],
-]);
-
-$response = curl_exec($curl);
-curl_close($curl);
-
-$response = json_decode($response, true);
-
-// 4. Check verification response
-if ($response && isset($response['data']['status']) && $response['data']['status'] === 'success') {
-    $amount = $response['data']['amount']; // in kobo
-    $ref    = $response['data']['reference'];
+if (isset($_GET['reference']) AND isset($_GET['tenant_id']) AND isset($_GET['house_id']) AND isset($_GET['amount'])) {
+    $house_payment = 'approved'; // or 'unpaid'
+    $availability_status = 'rented'; 
+    $houseObj = new House();
+    $updated = $houseObj->updateHouseStatus($house_id, $house_payment, $availability_status);
+    
+    if ($updated) {
+        $_SESSION['message'] = "House status updated successfully.";
+    } else {
+        $_SESSION['message'] =  "Failed to update house status.";
+    }
 
     $paymentObj = new Payment();
-    if ($paymentObj->recordPayment($tenant_id, $house_id, $amount, $ref)) {
-        echo "✅ Payment recorded successfully!";
+    $paymentObj->addPayment($tenant_id, $house_id, $amount, $reference, $status = 'completed');
+    if ($updated) {
+        $_SESSION['message'] = "Payment status updated successfully.";
     } else {
-        echo "⚠️ Payment verification succeeded, but failed to save record.";
+        $_SESSION['message'] =  "Failed to update payment status.";
     }
-} else {
-    echo "❌ Payment verification failed!";
 }
+print_r("Reference $reference Tenant ID $tenant_id House ID $house_id Amount Paid $amount ". $_SESSION['message']);
+?>
