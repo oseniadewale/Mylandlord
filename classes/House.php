@@ -9,7 +9,9 @@ class House extends Db
     private $dbconn;
 
 
-    public function uploadHouse($house_type, $price_id, $picture_path, $location, $state_id, $lg_id, $landlord_id,$actual_price, $rent_duration, $features_string)
+    public function uploadHouse($house_type, $price_id,
+    $picture1, $picture2, $picture3, $picture4, $picture5, $picture6, $picture7,
+    $location, $state_id, $lg_id, $landlord_id, $actual_price, $rent_duration, $features_string, $landlord_notice)
     {
         
         $state_name = $_POST["state"];
@@ -31,11 +33,23 @@ class House extends Db
 
 
 
-        $sql = "INSERT INTO house(house_type, price_id, picture_1,location, state_id, lg_id,landlord_id,actual_price,rent_duration,house_features ) VALUES (?,?,?,?, ?, ?,?,?,?, ?)";
+        $sql = "INSERT INTO house(house_type, price_id, picture_1, picture_2, picture_3, picture_4, picture_5, picture_6, picture_7,location, state_id, lg_id,landlord_id,actual_price,rent_duration,house_features, landlord_notice ) VALUES (?,?,?,?,?,?,?,?,?,?,?, ?, ?,?,?,?, ?)";
         $stmt = $this->connect()->prepare($sql);
 
         try {
-            $stmt->execute([$house_type, $price_id, $picture_path, $location, $state_id, $lg_id, $landlord_id,$actual_price, $rent_duration, $features_string]);
+          
+
+              $stmt->execute([ $house_type, $price_id,
+    $picture1, $picture2, $picture3, $picture4, $picture5, $picture6, $picture7,
+    $location, $state_id, $lg_id, $landlord_id, $actual_price, $rent_duration, $features_string, $landlord_notice]);
+       
+       
+       
+       
+       
+       
+       
+       
         } catch (PDOException $e) {
             die("DB Error: " . $e->getMessage());
         }

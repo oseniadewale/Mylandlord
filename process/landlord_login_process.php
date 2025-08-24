@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/LANDLORD/classes/landlord.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/mylandlord/classes/landlord.php";
 
 if (isset($_POST["btn_landlord_login"])) {
     $username = trim($_POST["landlord_username"]);

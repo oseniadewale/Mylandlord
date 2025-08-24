@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$base_url = 'http://localhost/LANDLORD'; // or use $_SERVER for dynamic path
+$base_url = 'http://localhost/mylandlord'; // or use $_SERVER for dynamic path
 include_once("header.php");
 
 

@@ -1,4 +1,4 @@
-<?php $base_url = 'http://localhost/LANDLORD'; ?>
+<?php $base_url = 'http://localhost/mylandlord'; ?>
 <!DOCTYPE html>
 <html lang="en">
 

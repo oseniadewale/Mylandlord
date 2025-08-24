@@ -148,24 +148,7 @@ include_once("header.php");
                         <div class="col-md-6 mb-3">
 
                             <label for="price" class="form-label"><b>Price:</b></label>
-                            <!-- <select name="price" id="price" class="form-select" required> <i>fa-</i>
-                                <option value="fifty_thousand">0 - ₦50,000</option>
-                                <option value="one_hundred_thousand">₦50,000 - ₦100,000</option>
-                                <option value="two_hundred_thousand">₦100,000 - ₦200,000</option>
-                                <option value="five_hundred_thousand">₦200,000 - ₦500,000</option>
-                                <option value="one_million">₦500,000 - ₦1,000,000</option>
-                                <option value="two_million">₦1,000,000 - ₦2,000,000</option>
-                                <option value="five_million">₦2,000,000 - ₦5,000,000</option>
-                                <option value="ten_million">₦5,000,000 - ₦10,000,000</option>
-                                <option value="twenty_million">₦10,000,000 - ₦20,000,000</option>
-                                <option value="fifty_million">₦20,000,000 - ₦50,000,000</option>
-                                <option value="one_hundred_million">₦50,000,000 - ₦100,000,000</option>
-                                <option value="above_one_hundred_million">Above ₦100,000,000</option>
-
-
-
-
-                            </select> -->
+                          
 
                             <select name="price" id="price" class="form-select" required> <i>fa-</i>
                         <option value="1">0 - ₦50,000</option>

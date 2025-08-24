@@ -23,6 +23,8 @@ if (!isset($_SESSION["landlord_id"])) {
 
 
 
+
+
 ?>
 
 <style>
@@ -36,6 +38,22 @@ if (!isset($_SESSION["landlord_id"])) {
         <div class="row">
             <h2 class="mt-4" style="display:flex; justify-content:center; color:green">House Upload page</h2>
             <div class="col col-lg-7">
+
+            <div>
+                <?php
+
+                if(isset( $_SESSION["picture1_error"]) || isset($_SESSION["picture1_size"]) || isset($_SESSION["picture1_type_error"])
+                    
+                   || isset( $_SESSION["picture2_error"]) || isset($_SESSION["picture2_size"]) || isset($_SESSION["picture2_type_error"])
+
+                     || isset( $_SESSION["picture3_error"]) || isset($_SESSION["picture3_size"]) || isset($_SESSION["picture3_type_error"])
+
+                    
+                    
+                    )
+                
+                ?>
+            </div>
 
                 <form action="process/house_process.php" method="post" enctype="multipart/form-data">
                     <div>
@@ -135,62 +153,119 @@ if (!isset($_SESSION["landlord_id"])) {
 
                     <div>
                         <label for="actual_price" class="label-form">Actual price in ₦</label>
-                        <input type="number" name="actual_price" class="form-control is-invalid">
-                        <div class="invalid-feedback">
+                        <input type="number" name="actual_price" class="form-control">
 
-                            Actual price should be written in number only
-                        </div>
                     </div>
 
 
 
                     <div>
                         <label for="rent_duration">Rentage Period</label>
-                        <input type="text" name="rent_duration" class="form-control is-invalid">
+                        <input type="text" name="rent_duration" class="form-control">
 
-                        <div class="invalid-feedback">
-                            Rentage period for the price written above should be written here
 
-                        </div>
 
                     </div>
 
 
 
-                    <label for="picture 1">Picture 1</label>
-                    <input type="file" class="form-control" name="pic1">
-                    <br>
+
+
+                    <div>
+
+
+                        <label for="picture_1">Picture 1</label>
+                        <input type="file" class="form-control" name="pic1" required
+                            placeholder="compulsory picture upload">
+                        <small>Compulsory upload .Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
+                        <label for="picture_2">Another view for picture 1</label>
+                        <input type="file" class="form-control" name="pic2" required
+                            placeholder="compulsory picture upload">
+                        <small>Compulsory upload. Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
+                        <label for="picture_3">Picture 1</label>
+                        <input type="file" class="form-control" name="pic3" placeholder="compulsory picture upload">
+                        <small>Compulsory upload. Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
+                        <br>
+                        <label for="picture_4">Picture 1</label>
+                        <input type="file" class="form-control" name="pic4">
+                        <small>Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                            2MB</small><br>
+                        <br>
+                        <label for="picture_5">Picture 1</label>
+                        <input type="file" class="form-control" name="pic5">
+                        <small>Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                            2MB</small><br>
+                        <br>
+                        <label for="picture_6">Picture 6</label>
+                        <input type="file" class="form-control" name="pic6">
+                        <small>Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                            2MB</small><br>
+                        <br>
+                        <label for="picture_7">Picture 7</label>
+                        <input type="file" class="form-control" name="pic7">
+                        <br>
+
+
+                    </div>
 
 
 
                     <div>
-                        <label for="landlord_house_location">Actual House Location :</label>
-                        <textarea name="house_location" id=""
+                        <label for="landlord_house_location" class="label-control">Actual House Location :</label>
+                        <textarea name="house_location" id="" class="form-control"
                             placeholder="write the actual location of the house here"></textarea>
 
                     </div>
                     <div>
                         <label><input type="checkbox" name="house_features[]" value="Gated"> Gated</label><br>
-                                                <label><input type="checkbox" name="house_features[]" value="has_no_gate"> No Gate</label><br>
-                        <label><input type="checkbox" name="house_features[]" value="fenced">Has  Fence</label><br>
-                                                <label><input type="checkbox" name="house_features[]" value="not_fenced">Has no  Fence</label><br>
+                        <label><input type="checkbox" name="house_features[]" value="has_no_gate"> No Gate</label><br>
+                        <label><input type="checkbox" name="house_features[]" value="fenced">Has Fence</label><br>
+                        <label><input type="checkbox" name="house_features[]" value="not_fenced">Has no
+                            Fence</label><br>
                         <label><input type="checkbox" name="house_features[]" value="Metered Electricity"> Metered
                             Electricity</label><br>
                         <label><input type="checkbox" name="house_features[]" value="Shared Metered Electricity"> Shared
                             Metered Electricity</label><br>
 
-                             <label><input type="checkbox" name="house_features[]" value="currently_has_no_metered_electricity_but_working_to_get_one"> No meter yet but working to get one</label><br>
-                                                <label><input type="checkbox" name="house_features[]" value="has_parking_space"> Has parking space</label>
-                            <label><input type="checkbox" name="house_features[]" value="has_no_parking_space"> Has no parking space</label>
-                            <label><input type="checkbox" name="house_features[]" value="Allow pets"> Allow pet
-                            </label>
-                                               <label><input type="checkbox" name="house_features[]" value="room_or_house_tiled">Room or house tiled</label>
-                                                    <label><input type="checkbox" name="house_features[]" value="room_or_house_not_tiled">Room or house not tiled</label>
+                        <label><input type="checkbox" name="house_features[]"
+                                value="currently_has_no_metered_electricity_but_working_to_get_one"> No meter yet but
+                            working to get one</label><br>
+                        <label><input type="checkbox" name="house_features[]" value="has_parking_space"> Has parking
+                            space</label> <br>
+                        <label><input type="checkbox" name="house_features[]" value="has_no_parking_space"> Has no
+                            parking space</label><br>
+                        <label><input type="checkbox" name="house_features[]" value="Allow pets"> Allow pet
+                        </label> <br>
+                        <label><input type="checkbox" name="house_features[]" value="room_or_house_tiled">Room or house
+                            tiled</label> <br>
+
+                        <label><input type="checkbox" name="house_features[]" value="room_or_house_not_tiled">Room or
+                            house not tiled</label> <br>
+                        <label><input type="checkbox" name="house_features[]" value="bore_hole_water">Borehole
+                            Water</label> <br>
+
+                        <label><input type="checkbox" name="house_features[]" value="well_water">Well Water</label> <br>
+                        <label><input type="checkbox" name="house_features[]" value="no_water_in_compound">No water
+                            source in compound</label> <br>
+
+
+
                     </div>
                     <br>
 
-                    <button name="housebtn" class="btn btn-success house_btn">Submit</button>
+                    <div>
+                        <label for="notice_for_tenant" class="label-control"> Any other notice for tenant: </label>
+                            <textarea name="notice_for_tenant" id="" class="form-control" placeholder="write any other notification for the tenant here"></textarea>
+                        
+                    </div> 
+                    <div style="margin-top:4px; display:flex; justify-content:center; text-center">
 
+                      <button name="housebtn" class="btn btn-success house_btn">Submit</button>
+
+
+                    </div>
+
+                  
 
 
 

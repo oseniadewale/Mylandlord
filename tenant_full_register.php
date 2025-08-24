@@ -1,6 +1,6 @@
 <?php
 session_start();
-$base_url = 'http://localhost/LANDLORD';
+$base_url = 'http://localhost/mylandlord';
 $page_title = "Tenant Full Registration";
 include_once("header.php");
 

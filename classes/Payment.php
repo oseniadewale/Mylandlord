@@ -26,9 +26,14 @@ class Payment extends Db{
                     payments.payment_status, 
                     payments.payment_date, 
                     payments.reference_code, 
-                    house.house_type
+                    tenant.tenant_username,
+                    house.house_type,
+                    house.picture_1
+
                 FROM payments 
                 INNER JOIN house ON payments.house_id = house.house_id
+                   
+                INNER JOIN tenant ON payments.tenant_id = tenant.tenant_id
                 WHERE payments.tenant_id = ?
                 ORDER BY payments.payment_date DESC";
 

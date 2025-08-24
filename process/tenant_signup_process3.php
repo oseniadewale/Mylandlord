@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once "../classes/TenantSignup.php";
-$base_url = 'http://localhost/tenant'; // or use $_SERVER for dynamic path
+$base_url = 'http://localhost/mylandlord'; // or use $_SERVER for dynamic path
 include_once("../header.php");
 
 $mysignup = new TenantSignup;

@@ -1,5 +1,5 @@
 <?php
-$base_url = 'http://localhost/LANDLORD';
+$base_url = 'http://localhost/mylandlord';
 include_once("../header.php");
 include_once "../classes/Indexshow.php";
 

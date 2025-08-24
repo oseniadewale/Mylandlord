@@ -9,11 +9,23 @@ if (!isset($_SESSION["tenant_id"])) {
     exit();
 }
 
+
+
 $houseObj = new House();
 $houses = $houseObj->getAvailableHouses();
 ?>
 
 <div class="container-fluid mt-5">
+    <?php 
+    if(isset( $_SESSION["reference_error"] )){
+          echo "<div class='container-fluid alert alert-danger' >".
+
+           "<p style='margin-top:20px; color:red'>".$_SESSION['reference_error']."</p>".
+        "</div>";
+    }
+    
+    
+    ?>
     <h2 class="text-center mb-4">Available House(s) for Rent</h2>
 
     <?php if (empty($houses)): ?>
@@ -53,6 +65,10 @@ $houses = $houseObj->getAvailableHouses();
         </div>
     <?php endif; ?>
 </div>
+
+<?php $_SESSION["tenant_id"] = $tenant_id; ?>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -60,10 +76,13 @@ $houses = $houseObj->getAvailableHouses();
 
 
 <script>
+
+    
+    
   
   function payWithPaystack(email, amount, houseId, tenantId) {
       let handler = PaystackPop.setup({
-          key: 'pk_test_403c7467f1ebb26b9227a432b34805ed18309963', 
+          key: 'pk_test_70cc747242b486bcac8f1f339999610588bd0308', 
           email: email,
           amount: amount * 100, // Paystack amount is in kobo if NGN
           currency: 'NGN',

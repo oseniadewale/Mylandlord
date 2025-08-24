@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$base_url = 'http://localhost/LANDLORD';
+$base_url = 'http://localhost/mylandlord';
 
 // Redirect if not logged in
 if (!isset($_SESSION["admin_id"])) {

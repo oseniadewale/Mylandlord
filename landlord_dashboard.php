@@ -20,40 +20,45 @@ $number = 1;
 
 <h5 class="mt-4 ms-1 d-flex align-items-center justify-content-center">
     <img src="images/landlord_icon.png" alt="icon" class="img-fluid me-2" style="width: 20px; height: 20px;">
-    Welcome 
-    <span style="color:blue; margin-left: 5px"><?php echo $_SESSION["landlord_username"] ?>!</span> 
-    <span style="margin-left:10px">This is your personal dashboard.</span>
+    Welcome
+    <span style="color:blue; margin-left: 5px"><?php echo $_SESSION["landlord_username"] ?>!</span>
+    <span style="margin-left:10px">This is your personal dashboard.(<span style="color:blue; margin-left:3px">as a
+            landlord</span>).</span>
 </h5>
 
 <h6 class="mt-4 ms-1" style="display:flex;justify-content:center">
-    <?php 
+    <?php
 
     date_default_timezone_set('Africa/Lagos');
 
-$now = new DateTime(); // or set your timezone as needed
-
-$day   = $now->format('j');         // Day without leading 0
-$month = $now->format('F');         // Full month name
-$year  = $now->format('Y');         // 4-digit year
-$time  = $now->format('g:ia');      // 12-hour format, no leading zero, with am/pm
-
-// Get the ordinal suffix (st, nd, rd, th)
-function getOrdinal($day) {
-    if (!in_array(($day % 100), [11, 12, 13])) {
-        switch ($day % 10) {
-            case 1: return 'st';
-            case 2: return 'nd';
-            case 3: return 'rd';
+    $now = new DateTime(); // or set your timezone as needed
+    
+    $day = $now->format('j');         // Day without leading 0
+    $month = $now->format('F');         // Full month name
+    $year = $now->format('Y');         // 4-digit year
+    $time = $now->format('g:ia');      // 12-hour format, no leading zero, with am/pm
+    
+    // Get the ordinal suffix (st, nd, rd, th)
+    function getOrdinal($day)
+    {
+        if (!in_array(($day % 100), [11, 12, 13])) {
+            switch ($day % 10) {
+                case 1:
+                    return 'st';
+                case 2:
+                    return 'nd';
+                case 3:
+                    return 'rd';
+            }
         }
+        return 'th';
     }
-    return 'th';
-}
 
-$ordinal = getOrdinal($day);
+    $ordinal = getOrdinal($day);
 
-// Final output
-echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$time} in Nigeria(Africa/Lagos time zone).";
-?>
+    // Final output
+    echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$time} in Nigeria(Africa/Lagos time zone).";
+    ?>
 
 </h6>
 
@@ -74,7 +79,7 @@ echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$ti
     </div>
 <?php else: ?>
     <span class="ps-2">This is your dashboard and the houses you have for rent:</span><br><br>
-    <table class="table table-striped table-bordered table-success mx-2 pe-2"  border="1">
+    <table class="table table-striped table-bordered table-success mx-2 pe-2" border="1">
         <thead>
             <tr>
 
@@ -98,18 +103,18 @@ echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$ti
                     <td><?php echo $number++ ?></td>
                     <td><?= ($house['house_type']) ?></td>
                     <td><?= ($house['price_range']) ?></td>
-                    <td><?= '₦'.number_format($house['actual_price']) ?></td>
+                    <td><?= '₦' . number_format($house['actual_price']) ?></td>
                     <td><?= ($house['rent_duration']) ?></td>
                     <td><?= ($house['state_name']) ?></td>
                     <td><?= ($house['lg_name']) ?></td>
                     <td><?= ($house['location']) ?></td>
-                     <td><?= ($house['house_features']) ?></td>
-                      
-                       <td><?= ($house['availability_status']) ?></td>
-                        <td><?= ($house['house_payment']) ?></td>
+                    <td><?= ($house['house_features']) ?></td>
+
+                    <td><?= ($house['availability_status']) ?></td>
+                    <td><?= ($house['house_payment']) ?></td>
 
                     <td>
-                        <img src="<?= $base_url . '/' . $house['picture_1'] ?>" width="100">
+                        <img src="<?= $base_url . '/' . $house['picture_1'] ?>" width="100" alt="uploaded house image">
 
 
                     </td>
@@ -122,8 +127,8 @@ echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$ti
 
 <?php if (!empty($houses)) {
 
-    echo" <div>" .
-        '<span>' . 'You can upload more houses here' . ' <a href="house_upload.php">' . '<button style="color:green">' .'<img src="images/house2_icon.png" width=15px style="margin-right:3px">'. 'Upload House' . '</button>' . '</a>' .
+    echo " <div>" .
+        '<span>' . 'You can upload more houses here' . ' <a href="house_upload.php">' . '<button style="color:green">' . '<img src="images/house2_icon.png" width=15px style="margin-right:3px">' . 'Upload House' . '</button>' . '</a>' .
         '</span>' .
         "</div>";
 
@@ -138,13 +143,23 @@ echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$ti
 
 <p>Register here as a tenant <a href="register_landlord_as_tenant.php">Register As Tenant</a>
 
-<p>Drop a Suggestion here: <a href="landlord_suggestion.php"><button style="color:green"><img src="images/suggestion_icon.png" alt="icon" width="20px" style="margin-right:3px">Landlord Suggest</button></a></p>
+</p>
 
+<p>Switch to a tenant <a href="tenant_dashboard.php"><img src="" alt=""> <img src="images/switch_icon.png" alt="icon" class="img-fluid me-2" style="width: 20px; height: 20px;">Switch to a tenant</a>
+ <?php $_SESSION["tenant_id"] = $_SESSION["landlord_id"] ?>
+ <?php $_SESSION["tenant_email"] = $_SESSION["landlord_email"] ?>
+ <?php $_SESSION["tenant_username"] = $_SESSION["landlord_username"] ?>
 
 
 </p>
 
-<p>Recommend a <strong style="color:green">tenant</strong> here: <a href="landlord_recommendation.php"><button style="color:green"><img src="images/recommendation_icon.png" alt="icon" width="20px" style="margin-right:3px"> For a Tenant recommedation</button></a></p>
+<p>Drop a Suggestion here: <a href="landlord_suggestion.php"><button style="color:green"><img
+                src="images/suggestion_icon.png" alt="icon" width="20px" style="margin-right:3px">Landlord
+            Suggest</button></a></p>
+
+<p>Recommend a <strong style="color:green">tenant</strong> here: <a href="landlord_recommendation.php"><button
+            style="color:green"><img src="images/recommendation_icon.png" alt="icon" width="20px"
+                style="margin-right:3px"> For a Tenant recommedation</button></a></p>
 <p>Logout from the application here <a href="landlord_logout.php"><button class="btn btn-danger">Logout</button></a>
 
 </p>

@@ -5,8 +5,11 @@ include_once("classes/House.php");
 
 // Get reference from URL
 if (!isset($_GET['reference'])) {
-    alert('Payment transaction ID missing. Do try again.');
-    header();
+   
+
+    $_SESSION["reference_error"] = "Payment transaction ID is missing. Do try again to initiate your transaction";
+    
+    header("location: available_houses.php");
     die(" No reference supplied.");
 }
 $reference = $_GET['reference']; //paystack transaction ID
