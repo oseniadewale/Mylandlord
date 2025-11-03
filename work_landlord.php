@@ -16,13 +16,29 @@ include_once("header.php");
     <br>
     <br>
     <br>
-    <p class="mt-3">Congratulations <?php echo '<span style="color:blue">'.  $_SESSION["landlord_username"].'!'.'</span>'; ?> on your signup. Do well to update your profile here
-        <a href="landlord_full_register.php">Full Register Here</a>
+    <?php if (isset($_SESSION["incomplete_landlord_profile"])): ?>
+    <div class="alert alert-danger">
+        <?= $_SESSION["incomplete_landlord_profile"]; ?>
+    </div>
+    <?php unset($_SESSION["incomplete_landlord_profile"]); ?>
+<?php endif; ?>
+
+    <p class="mt-3">Congratulations <?php echo '<span style="color:blue">'.  $_SESSION["landlord_username"].'!'.'</span>'; ?> on your signup. Do well to update your profile here →
+        <a href="landlord_full_register.php" class="btn btn-success"> <img src="images/star.png" width="20" alt="star image"> Click here for full Landlord Registration <img src="images/star.png" alt="star image" width="20"></a>
 
       
 
 
 </p>
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <img src="images/house15.jpg" alt="house image" class="img-fluid">
+    </div>
+    <div class="col-lg-6 col-lg-sm-12"  >
+        <img src="images/house16.jpg" alt="house image" class="img-fluid">
+        
+    </div>
+</div>
 </div>
 
 <?php

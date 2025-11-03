@@ -1,42 +1,23 @@
 <?php
-
 include_once "Db.php";
+include_once "../helpers/Db_Unique.php";
 
-class LandlordSignup extends Db{
-    private $dbconn;
+class landlordSignup extends Db {
 
+    public function landlord_signup($landlord_username, $landlord_password, $landlord_email, $landlord_mobile) {
+        $hash = password_hash($landlord_password, PASSWORD_DEFAULT);
+        $conn = $this->connect(); 
 
-    public function landlord_signup($landlord_username, $landlord_password, $landlord_email, $landlord_mobile){
-        $hashe = password_hash($landlord_password, PASSWORD_DEFAULT);
+        // ✅ Let exceptions bubble up to process script
+        assert_global_uniqueness($conn, $landlord_username, $landlord_email, $landlord_mobile);
 
+        $sql = "INSERT INTO landlord 
+                   (landlord_username, landlord_password, landlord_email, landlord_mobile, profile_completed) 
+                VALUES (?, ?, ?, ?, 0)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$landlord_username, $hash, $landlord_email, $landlord_mobile]);
 
-        $sql = "INSERT INTO landlord (landlord_username, landlord_password, landlord_email, landlord_mobile) VALUES(?, ?, ?, ?)";
-        $stmt = $this->connect()->prepare($sql);
-
-
-        try {
-            $stmt->execute([$landlord_username, $hashe, $landlord_email, $landlord_mobile]);
-        } catch ( PDOException $e) {
-
-            $e->getMessage();
-
-            echo "Error dey";
-
-        }
-
-
-
+        return $conn->lastInsertId(); 
     }
 }
-
-// $a = new LandlordSignup;
-
-
-
-
-
-
-
-
-
 ?>

@@ -31,17 +31,17 @@ $houses = $houseObj->getAvailableHouses();
     <?php if (empty($houses)): ?>
         <div class="alert alert-danger">No houses available for rent at this time.</div>
         <div>
-            <p>Go back to your dashboard here <a href="tenant_dashboard.php"><button style="color:green">Back to dashboard</button></a></p>
+            <p>Go back to your dashboard here <a href="tenant_dashboard.php" class="btn btn-success"> ←Back to dashboard</a></p>
         </div>
     <?php else: ?>
         <div class="row">
             <?php foreach ($houses as $house): ?>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 col-lg-3 col-sm-6 mb-4">
                     <div class="card h-100 shadow-sm">
                         <img src="<?= $base_url . '/' . $house['picture_1'] ?>" class="card-img-top"
                             style="height: 200px; object-fit: cover;" loading="lazy">
                         <div class="card-body">
-                            <h5 class="card-title text-success"><?= ($house['house_type']) ?></h5>
+                            <h5 class="card-title text-success"> <span>Type: </span><?= ($house['house_type']) ?></h5>
                             <p class="card-text">
                                 It is ₦<?= number_format($house['actual_price']) ?><br> and located in
                                 <?= ($house['location']) ?>,<br> in
@@ -51,10 +51,12 @@ $houses = $houseObj->getAvailableHouses();
                             </p>
                         </div>
                         <div class="card-footer text-center">
-                            <button class="btn btn-success"
-                                onclick="payWithPaystack('<?= $_SESSION['tenant_email'] ?>', '<?= $house['actual_price'] ?>', '<?= $house['house_id'] ?>', '<?= $_SESSION['tenant_id'] ?>')">
-                                Rent Now
-                            </button>
+                           
+                             <a class="btn btn-success" href="more_details_on_house.php?house_id=<?= $house['house_id'] ?>">Click here for More details</a>
+
+                           
+                               
+                            
                         </div>
                     </div>
                 </div>
@@ -66,40 +68,8 @@ $houses = $houseObj->getAvailableHouses();
     <?php endif; ?>
 </div>
 
-<?php $_SESSION["tenant_id"] = $tenant_id; ?>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-<script src="https://js.paystack.co/v1/inline.js"></script>
-
-
-<script>
-
-    
-    
-  
-  function payWithPaystack(email, amount, houseId, tenantId) {
-      let handler = PaystackPop.setup({
-          key: 'pk_test_70cc747242b486bcac8f1f339999610588bd0308', 
-          email: email,
-          amount: amount * 100, // Paystack amount is in kobo if NGN
-          currency: 'NGN',
-          ref: ''+Math.floor((Math.random() * 1000000000) + 1), 
-          callback: function(response) {
-              alert('Success. Transaction ref is ' + response.reference);
-              const reference = response.reference;
-              // use encodeURIComponent for safety
-              window.location.href = `verify_payment.php?reference=${encodeURIComponent(reference)}&house_id=${encodeURIComponent(houseId)}&amount=${encodeURIComponent(amount)}&tenant_id=${encodeURIComponent(tenantId)}`;
-          },
-          onClose: function() {
-              alert('Transaction cancelled');
-          }
-      });
-      handler.openIframe();
-  }
-
-</script>
 
 <?php include_once("footer.php"); ?>

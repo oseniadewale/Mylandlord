@@ -1,0 +1,26 @@
+# ==========================================
+# 🏠 Landlord-Tenant App .gitignore
+# ==========================================
+
+# 🔒 Sensitive backend configuration files
+/classes/Config.php
+/classes/Db.php
+/config/config.php
+/database/*.sql
+.env
+
+# ⚙️ Vendor and dependency files (if using Composer)
+vendor/
+
+# 🧾 Logs and temp files
+*.log
+*.tmp
+
+# 🪟 OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 💻 IDE/editor-specific folders
+.vscode/
+.idea/

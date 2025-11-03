@@ -19,12 +19,32 @@ if (isset($_POST["btn_tenant_login"])) {
         $_SESSION["tenant_username"] = $tenant_data["tenant_username"];
         $_SESSION["user_type"]       = $tenant_data["user_type"] ?? "tenant"; // optional
         $_SESSION["tenant_mobile"]   = $tenant_data["tenant_mobile"];
+        $_SESSION["tenant_firstname"]   = $tenant_data["tenant_firstname"];
+        $_SESSION["tenant_surname"]   = $tenant_data["tenant_surname"];
+        $_SESSION["tenant_middlename"]   = $tenant_data["tenant_middlename"];
+        $_SESSION["tenant_permanent_homeaddress"]   = $tenant_data["permanent_homeaddress"];
+        $_SESSION['active_role'] = 'tenant';
 
-        header("Location: ../tenant_dashboard.php");
-        exit();
+          $_SESSION["tenant_as_landlord"] = $tenant_data["tenant_as_landlord"];
+
+        // header("Location: ../tenant_dashboard.php");
+        // exit();
+// Assume $tenant is fetched from DB after login
+if ($tenant_data['profile_completed'] == 0) {
+        $_SESSION["incomplete_tenant_profile"] = "Please complete your profile to access your dashboard.";
+    header("Location: ../work_tenant.php");
+    exit();
+} else {
+    
+    header("Location: ../tenant_dashboard.php");
+    exit();
+}
+
+
+
     } else {
         // Set error and redirect back to login form
-        $_SESSION["login_error"] = "Invalid login details. Try again.";
+        $_SESSION["login_error"] = "Invalid login details. Try again see you bro.";
         header("Location: ../tenant_login.php");
         exit();
     }

@@ -26,7 +26,7 @@ if (isset($_SESSION["admin_role"]) && $_SESSION["admin_role"] === "super_admin")
         // Insert new admin as moderator
         $sql = "INSERT INTO admins (admin_username, admin_password,admin_email, admin_role) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$username, $email, $hashed, 'moderator']);
+        $stmt->execute([$username, $hashed, $email, 'moderator']);
 
         echo "✅ Admin registered successfully!";
     }
@@ -40,8 +40,11 @@ if (isset($_SESSION["admin_role"]) && $_SESSION["admin_role"] === "super_admin")
 
 <div class="container-fluid">
     <form method="POST">
+        <label for="admin_username">Admin username</label>
         <input type="text" name="admin_username" placeholder="Admin Username" required><br>
+        <label for="admin_password">Admin Password</label>
         <input type="password" name="admin_password" placeholder="Password" required><br>
+        <label for="admin_email">Admin Email</label>
          <input type="email" name="admin_email" placeholder="email" required><br>
         <button type="submit">Register Admin</button>
     </form>

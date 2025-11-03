@@ -23,7 +23,7 @@ include_once("header.php");
     <div class="row">
         <div class="mt-4" style="display:flex; justify-content:center">
             
-            <div class="card w-50">
+            <div class="card w-50 mt-4">
                 <div class="card-header">
                     <h2 class=""style="display:flex; justify-content:center; color:green">Client's login page</h2>
 
@@ -35,11 +35,15 @@ include_once("header.php");
                             placeholder="input your username here"><br>
 
                         <label for="password" class="label-control"> <b>Password</b></label>
-                        <input type="text" name="tenant_password" class="form-control"
+                        <input type="password" name="tenant_password" class="form-control"
                             placeholder="input your password here">
 
                              <div class="card-footer text-center">
                     <button class="btn btn-success" name="btn_tenant_login">Submit</button>
+               <p style="color:black; font-size:20px" class="text-center">If not registered before as a tenant signup here 
+            <a href="tenant_signup_form3.php" style="color:green">Signup</a>
+        </p>
+               
                 </div>
                     </form>
 
@@ -55,28 +59,24 @@ include_once("header.php");
     </div>
     <br><br>
 
-    <div class="row">
-        <p style="color:wine; font-size:20px" class="text-center">If not registered before as a tenant signup here 
-            <a href="tenant_signup_form3.php" style="color:green">Signup</a>
-        </p>
-    </div>
+    
 
 </div>
 
 <div class="container mt-3">
     <div class="row">
         <div class="col-lg-3">
-        <img src="images/house9.jpg" class="form-control" alt="">
+        <img src="images/house9.jpg" class="img-fluid" alt="image of house">
         </div>
          <div class="col-lg-3">
-            <img src="images/house10.jpg" class="form-control"alt="">
+            <img src="images/house10.jpg" class="img-fluid" alt="image of house">
         </div>
          <div class="col-lg-3">
-            <img src="images/house13.jpg" class="form-control"alt="">
+            <img src="images/house13.jpg" class="img-fluid" alt="image of house">
             
         </div>
          <div class="col-lg-3">
-            <img src="images/house12.jpg" class="form-control"alt="">
+            <img src="images/house12.jpg" class="img-fluid" alt="image of house">
             
         </div>
     </div>

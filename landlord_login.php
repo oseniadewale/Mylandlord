@@ -12,17 +12,17 @@ include_once("header.php");
 </style>
 
 <div class="container mycontainer mt-4">
-    <class class="row">
+    <div class="row">
         <?php
     if (isset($_SESSION["login_error"])) {
         echo '<div class="alert alert-danger">'.$_SESSION["login_error"].'</div>';
         unset($_SESSION["login_error"]); // clear after displaying
     }?>
 
-    </class>
+</div>
     <div class="row">
         <div class="mt-4" style="display:flex; justify-content:center">
-            <div class="card w-50">
+            <div class="card w-50 mt-4">
                 <div class="card-header">
                     <h2 style="display:flex; justify-content:center; color:green">Landlord's login page</h2>
 
@@ -57,26 +57,24 @@ include_once("header.php");
     </div>
     <br><br>
 
-    <div class="row">
-        
-    </div>
+    
 
 </div>
 
 <div class="container mt-3">
     <div class="row">
         <div class="col-lg-3">
-        <img src="images/house6.jpg" class="form-control" alt="">
+        <img src="images/house6.jpg" class="img-fluid" alt="image of house">
         </div>
          <div class="col-lg-3">
-            <img src="images/house7.jpg" class="form-control" alt="">
+            <img src="images/house7.jpg" class="img-fluid" alt="image of house">
         </div>
          <div class="col-lg-3">
-            <img src="images/house8.jpg" class="form-control" alt="">
+            <img src="images/house8.jpg" class="img-fluid" alt="image of house">
             
         </div>
          <div class="col-lg-3">
-            <img src="images/house10.jpg" class="form-control" alt="">
+            <img src="images/house10.jpg" class="img-fluid" alt="image of house">
             
         </div>
     </div>

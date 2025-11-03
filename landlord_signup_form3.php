@@ -36,6 +36,15 @@ include_once("header.php");
 
 
 <div class="container">
+    <div class="row">
+
+        <?php if (isset($_SESSION['Db_unique_error'])): ?>
+        <div class="alert alert-danger container-fluid mt-4">
+            <?= $_SESSION['Db_unique_error']; ?>
+        </div>
+        <?php unset($_SESSION['Db_unique_error']); ?>
+    <?php endif; ?>
+    </div>
     <div class="row mt-4 ">
         <h2 class="mt-5" style="color:green; display:flex; flex-direction:column; text-align:center">LANDLORD SIGNUP FORM</h2>
         <div class="col-lg-6 firstcol">

@@ -340,9 +340,26 @@ if ($tmpname5) $ok = $ok && move_uploaded_file($tmpname5, $destination5);
 if ($tmpname6) $ok = $ok && move_uploaded_file($tmpname6, $destination6);
 if ($tmpname7) $ok = $ok && move_uploaded_file($tmpname7, $destination7);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if ($ok) {
     $image = new House;
-    $image->uploadHouse(
+$success = $image->uploadHouse(
         $house, $price,
         $picture1, $picture2, $picture3,
         $picture4, $picture5, $picture6, $picture7,
@@ -350,10 +367,21 @@ if ($ok) {
         $actual_price, $rent_duration, $features_string, $landlord_notice
     );
 
-    echo "<p style='color:green'>House successfully uploaded</p>";
-    echo "<p>Go back to your dashboard here <a href='../landlord_dashboard.php'>My Dashboard</a></p>";
+    $_SESSION["house_available"] = $success["availability_status"];
+    $_SESSION["house_uploaded"] = '<span style="color:green; display:flex; justify-content:center">House successfully uploaded</span>';
+   header("Location: ../landlord_dashboard.php");
+   exit();
+
+
+
+
+
+
 } else {
-    echo "Something went wrong with your upload";
+
+    $_SESSION["house_not_uploaded"] = '<span style="color:red; display:flex; justify-content:center">House cannot be uploaded</span>';
+
+    header("Location: ../house_upload.php");
 }
 
 }

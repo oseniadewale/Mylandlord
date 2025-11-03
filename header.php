@@ -54,7 +54,7 @@
 
     nav a {
       color: white;
-      margin: 0 15px;
+      margin:  15px;
       text-decoration: none;
       font-weight: 500;
     }
@@ -74,13 +74,15 @@
       </div>
 
       <nav>
-        <a href="<?php echo $base_url; ?>/index5.php">Home Page</a>
+       
+        <a href="<?php echo $base_url; ?>/index.php">Home Page</a>
         <a href="<?php echo $base_url; ?>/landlord_login.php">Landlord</a>
         <a href="<?php echo $base_url; ?>/tenant_login.php">Tenant</a>
-        <a href="<?php echo $base_url; ?>/nysc_full_register.php">NYSC</a>
-        <a href="<?php echo $base_url; ?>/about.php">About</a>
-        <a href="#mycontact">Complaint</a>
-        <a href="<?php echo $base_url; ?>/admin_login.php"> Admin</a>
+        <a style=' flex-wrap: wrap;' href="<?php echo $base_url; ?>/nysc_login.php">NYSC</a>
+
+        <a style=' flex-wrap: wrap;' href="#mycontact">Complaint</a>
+                <a style=' flex-wrap: wrap;' href="<?php echo $base_url; ?>/about.php"> About</a>
+        <a style=' flex-wrap: wrap;' href="<?php echo $base_url; ?>/admin_login.php"> Admin</a>
       </nav>
     </div>
   </header>

@@ -36,10 +36,25 @@ if (!isset($_SESSION["landlord_id"])) {
 <body>
     <div class="container">
         <div class="row">
-            <h2 class="mt-4" style="display:flex; justify-content:center; color:green">House Upload page</h2>
+            <div class="col mt-4 pt-4">
+                <?php if(isset($_SESSION["house_not_uploaded"])){
+
+                    echo $_SESSION["house_not_uploaded"];
+                    unset($_SESSION["house_not_uploaded"]);
+                }?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-4">
+                            <h3 class="mt-4 pt-4" style="display:flex; justify-content:center; color:green"><img src="images/star.png" width="28" alt="star image">House Upload Page <img src="images/star.png" class="img-fluid" width="28" alt="star image"></h3>
+            </div>
+        </div> 
+        <div class="row">
+
             <div class="col col-lg-7">
 
-            <div>
+ 
                 <?php
 
                 if(isset( $_SESSION["picture1_error"]) || isset($_SESSION["picture1_size"]) || isset($_SESSION["picture1_type_error"])
@@ -47,13 +62,24 @@ if (!isset($_SESSION["landlord_id"])) {
                    || isset( $_SESSION["picture2_error"]) || isset($_SESSION["picture2_size"]) || isset($_SESSION["picture2_type_error"])
 
                      || isset( $_SESSION["picture3_error"]) || isset($_SESSION["picture3_size"]) || isset($_SESSION["picture3_type_error"])
+                         || isset( $_SESSION["picture4_error"]) || isset($_SESSION["picture4_size"]) || isset($_SESSION["picture4_type_error"])
+                          || isset( $_SESSION["picture3_error"]) || isset($_SESSION["picture3_size"]) || isset($_SESSION["picture3_type_error"])
+                            || isset( $_SESSION["picture5_error"]) || isset($_SESSION["picture5_size"]) || isset($_SESSION["picture5_type_error"])
+                             || isset( $_SESSION["picture6_error"]) || isset($_SESSION["picture6_size"]) || isset($_SESSION["picture6_type_error"])
+                              || isset( $_SESSION["picture7_error"]) || isset($_SESSION["picture7_size"]) || isset($_SESSION["picture7_type_error"])
 
                     
                     
-                    )
+                    ){
+                        echo"<div alert alert-danger>
+                         <span style='color:red'>There is an error in your upload</span>
+                        
+                        </div>";
+                       
+                    }
                 
                 ?>
-            </div>
+          
 
                 <form action="process/house_process.php" method="post" enctype="multipart/form-data">
                     <div>
@@ -152,7 +178,7 @@ if (!isset($_SESSION["landlord_id"])) {
                     </div>
 
                     <div>
-                        <label for="actual_price" class="label-form">Actual price in ₦</label>
+                        <label for="actual_price" class="label-form"><b>Actual price in ₦</b></label>
                         <input type="number" name="actual_price" class="form-control">
 
                     </div>
@@ -160,7 +186,7 @@ if (!isset($_SESSION["landlord_id"])) {
 
 
                     <div>
-                        <label for="rent_duration">Rentage Period</label>
+                        <label for="rent_duration"><b>Rentage Period</b></label>
                         <input type="text" name="rent_duration" class="form-control">
 
 
@@ -174,35 +200,38 @@ if (!isset($_SESSION["landlord_id"])) {
                     <div>
 
 
-                        <label for="picture_1">Picture 1</label>
+                        <label for="picture_1"><b>Picture 1</b></label>
                         <input type="file" class="form-control" name="pic1" required
                             placeholder="compulsory picture upload">
-                        <small>Compulsory upload .Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
-                        <label for="picture_2">Another view for picture 1</label>
+                        <small style="color:grey">Compulsory upload .Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
+                        <label for="picture_2"><b>Picture 2</b></label>
+
                         <input type="file" class="form-control" name="pic2" required
                             placeholder="compulsory picture upload">
-                        <small>Compulsory upload. Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
-                        <label for="picture_3">Picture 1</label>
+                        <small style="color:grey">Compulsory upload. Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
+                        <label for="picture_3"><b>Picture 3</b></label>
                         <input type="file" class="form-control" name="pic3" placeholder="compulsory picture upload">
-                        <small>Compulsory upload. Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
+                        <small style="color:grey">Compulsory upload. Allowed formats: JPG, PNG, GIF not more than 2MB</small><br>
                         <br>
-                        <label for="picture_4">Picture 1</label>
+                        <label for="picture_4"><b>Picture 4</b></label>
                         <input type="file" class="form-control" name="pic4">
-                        <small>Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                        <small style="color:grey">Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
                             2MB</small><br>
                         <br>
-                        <label for="picture_5">Picture 1</label>
+                        <label for="picture_5"><b>Picture 5</b></label>
                         <input type="file" class="form-control" name="pic5">
-                        <small>Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                        <small style="color:grey">Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
                             2MB</small><br>
                         <br>
-                        <label for="picture_6">Picture 6</label>
+                        <label for="picture_6"><b>Picture 6</b></label>
                         <input type="file" class="form-control" name="pic6">
-                        <small>Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                        <small style="color:grey">Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
                             2MB</small><br>
                         <br>
-                        <label for="picture_7">Picture 7</label>
+                        <label for="picture_7"><b>Picture 7</b></label>
                         <input type="file" class="form-control" name="pic7">
+                        <small style="color:grey">Not Compulsory but recommended upload. Allowed formats: JPG, PNG, GIF not more than
+                            2MB</small><br>
                         <br>
 
 
@@ -211,12 +240,14 @@ if (!isset($_SESSION["landlord_id"])) {
 
 
                     <div>
-                        <label for="landlord_house_location" class="label-control">Actual House Location :</label>
+                        <label for="landlord_house_location" class="label-control"><b>Actual House Location :</b></label>
                         <textarea name="house_location" id="" class="form-control"
-                            placeholder="write the actual location of the house here"></textarea>
+                            placeholder="write the actual location of the house here" required></textarea>
 
                     </div>
                     <div>
+                        <b>House features</b> <br>
+
                         <label><input type="checkbox" name="house_features[]" value="Gated"> Gated</label><br>
                         <label><input type="checkbox" name="house_features[]" value="has_no_gate"> No Gate</label><br>
                         <label><input type="checkbox" name="house_features[]" value="fenced">Has Fence</label><br>
@@ -280,10 +311,24 @@ if (!isset($_SESSION["landlord_id"])) {
                 </form>
 
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5 col-sm-12">
                 <img src="images/house8.jpg" alt="house picture 1" class="img-fluid">
+                
                 <img src="images/house9.jpg" alt="house picture 2" class="img-fluid">
+                 <img src="images/house10.jpg" alt="house picture 3" class="img-fluid">
+                  <img src="images/house13.jpg" alt="house picture 4" class="img-fluid">
+                   <img src="images/house14.jpg" alt="house picture 5" class="img-fluid">
+                   
             </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col" style="display:flex; align-items:center; justify-content:center">
+                <a href="landlord_dashboard.php" class="btn btn-success"> ← Go back to Landlord dashboard</a>
+            </div>
+
+
+
         </div>
     </div>
 
