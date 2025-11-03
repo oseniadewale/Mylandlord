@@ -1,4 +1,5 @@
-<?php $base_url = 'http://localhost/mylandlord'; ?>
+<?php $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
