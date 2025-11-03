@@ -1,6 +1,10 @@
 <?php
 session_start();
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 include_once "classes/House.php";
 
 if (!isset($_SESSION["tenant_id"])) {
@@ -106,4 +110,4 @@ function highlight($text, $searchKey)
 
 
 
-<?php include_once "footer.php"; ?>
+<?php  include_once __DIR__ . "/footer.php" ?>

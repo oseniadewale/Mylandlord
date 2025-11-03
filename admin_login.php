@@ -1,9 +1,13 @@
 <?php
 session_start();
 
-$base_url = 'http://localhost/LANDLORD';
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 $page_title = "Admin Login";
-include_once("header.php");
+
 ?>
 
 <div class="container mt-5 pt-5">
@@ -37,4 +41,4 @@ include_once("header.php");
     </form>
 </div>
 
-<?php include_once("footer.php"); ?>
+<?php  include_once __DIR__ . "/footer.php" ?>

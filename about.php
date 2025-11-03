@@ -1,7 +1,8 @@
 <?php
 
 
-include_once "header.php";
+include_once __DIR__ . "/header.php";
+
 
 
 
@@ -92,7 +93,8 @@ Email: <a href="mailto:oseni246femi@gmail.com">Send an Email</a> or manually cop
 
 
 <?php
-include_once "footer.php";
+include_once __DIR__ . "/footer.php";
+
 
 ?>
 

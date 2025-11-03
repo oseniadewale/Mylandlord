@@ -35,10 +35,10 @@ It includes **admin control**, **secure authentication**, and **role-based acces
 | **Frontend** | HTML5, CSS3, Bootstrap, JavaScript |
 | **Backend** | PHP (OOP + Sessions) |
 | **Database** | MySQL |
-| **Hosting (optional)** | [Railway.app](https://railway.app) |
 | **Version Control** | Git + GitHub |
 
 ---
 
-## ⚙️ Project Structure
+# Live demonstration 
+Live demonstration at : https://mylandlord-production.up.railway.app/
 

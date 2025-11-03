@@ -1,7 +1,10 @@
 <?php
 session_start();
-$base_url = 'http://localhost/mylandlord';
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 include_once "classes/Tenant.php";
 include_once "classes/Payment.php";
 
@@ -494,4 +497,4 @@ if (isset($_SESSION["tenant_not_set"])) {
 <script src="js/lga.min.js"></script>
 
 
-<?php include_once "footer.php"; ?>
+<?php  include_once __DIR__ . "/footer.php" ?>

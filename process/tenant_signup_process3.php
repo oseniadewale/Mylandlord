@@ -1,8 +1,11 @@
 <?php
 session_start();
 include_once "../classes/TenantSignup.php";
-$base_url = 'http://localhost/mylandlord';
-include_once "../header.php";
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/../header.php";
+
+
 
 $mysignup = new TenantSignup;
 

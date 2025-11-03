@@ -1,7 +1,10 @@
 <?php
 session_start();
-$base_url = 'http://localhost/mylandlord';
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 include_once("classes/House.php");
 
 if (!isset($_SESSION["tenant_id"])) {
@@ -201,4 +204,4 @@ $detailed_single_house = $houseObj->get_more_details_on_house($house_id);
 </script>
 
 
-<?php include "footer.php"; ?>
+<?php  include_once __DIR__ . "/footer.php" ?>

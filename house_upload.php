@@ -1,7 +1,10 @@
 <?php
 session_start();
-$base_url = 'http://localhost/LANDLORD';
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 
 
 
@@ -347,4 +350,4 @@ if (!isset($_SESSION["landlord_id"])) {
 
 
 
-    <?php include_once "footer.php" ?>
+    <?php  include_once __DIR__ . "/footer.php"?>

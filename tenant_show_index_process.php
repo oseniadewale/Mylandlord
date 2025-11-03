@@ -1,7 +1,10 @@
 <?php
 session_start();
-$base_url = 'http://localhost/mylandlord';
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 include_once "classes/Indexshow.php";
 
 $index = new Indexshow();
@@ -86,4 +89,4 @@ if (isset($_POST['search_index'])) {
 
 
 <?php 
-include_once("footer.php");?>
+ include_once __DIR__ . "/footer.php"?>

@@ -1,6 +1,10 @@
 <?php
 session_start();
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 include_once("classes/Payment.php");
 include_once("classes/House.php");
 
@@ -68,6 +72,6 @@ if (isset($_GET['reference']) AND isset($_GET['tenant_id']) AND isset($_GET['hou
 // print_r("Reference $reference Tenant ID $tenant_id House ID $house_id Amount Paid $amount ". $_SESSION['message']);
 
 
-include_once "footer.php";
+ include_once __DIR__ . "/footer.php";
 
 ?>

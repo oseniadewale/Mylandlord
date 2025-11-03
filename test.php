@@ -1,12 +1,17 @@
 <?php
 session_start();
 
+
 if (!isset($_SESSION['admin_id'])) {
     header("Location: admin_login.php");
     exit();
 }
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
-include_once("header.php");
+include_once __DIR__ . "/header.php";
+
+
+
 require_once "classes/Admin.php";
 
 
@@ -124,4 +129,4 @@ echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$ti
     </table>
 </div>
 
-<?php include_once("footer.php"); ?>
+<?php  include_once __DIR__ . "/footer.php" ?>

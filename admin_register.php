@@ -1,6 +1,10 @@
  <?php 
 session_start();
-include_once "header.php";
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 
 // Check if admin is logged in
 if (!isset($_SESSION["admin_username"])) {

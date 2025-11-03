@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-$base_url = 'http://localhost/LANDLORD';
 
-include_once "header.php";
+
+include_once __DIR__ . "/header.php";
+
 include_once "classes/Admin.php";
 
 // Redirect if not logged in
@@ -151,4 +152,5 @@ echo "Today is {$day}{$ordinal} {$month}, {$year} and currently the time is {$ti
     </div>
 </div>
 
-<?php include_once "footer.php"; ?>
+<?php include_once __DIR__ . "/footer.php";
+ ?>

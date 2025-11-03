@@ -1,8 +1,11 @@
 <?php
 
 $page_title = "Home Page"; // or "Login", "Dashboard", etc.);
-$base_url = 'http://localhost/mylandlord';
-include_once("header.php");
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 
 
 
@@ -20,7 +23,7 @@ include_once("header.php");
 
     .colA {
         background-color: #D1E7DD;
-        ";
+
 
     }
 
@@ -273,7 +276,7 @@ include_once("header.php");
 
         </div>
 
-        
+
 
 
         <div class="row">
@@ -342,168 +345,177 @@ include_once("header.php");
     </div>
 
     <div class="container-fluid">
-        
-    <div class="row">
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Biggimania says</b>: <i> Uploading pictures of my apartments and tracking payments all in one place —
-                    brilliant!</i></p>
+
+        <div class="row">
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Biggimania says</b>: <i> Uploading pictures of my apartments and tracking payments all in one
+                        place —
+                        brilliant!</i></p>
 
 
 
-        </div>
-        <div class='col-lg-2 col-md-4 col-sm-6 padding:2px'>
+            </div>
+            <div class='col-lg-2 col-md-4 col-sm-6 padding:2px'>
 
 
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Braggadicious says</b>: <i> The payment history section gives me confidence — I always know my rent
-                    status</i></p>
-
-
-
-        </div>
-
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings">
-            <img src="images/star.png" width=20px alt="star ratings">
-            <img src="images/star.png" width=20px alt="star ratings">
-            <img src="images/star.png" width=20px alt="star ratings">
-            <p><b>Prettyjane says</b>: <i> As a Corp member, i was worried about being scammed but this platform gave me
-                    verified landlord contacts.</i></p>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Braggadicious says</b>: <i> The payment history section gives me confidence — I always know my
+                        rent
+                        status</i></p>
 
 
 
-        </div>
+            </div>
 
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Finegal says</b>: <i> “Moving for service was daunting, but finding accommodation was smooth thanks to
-                    this app.</i></p>
-
-
-
-        </div>
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Papajay says</b>: <i> As a landlord, I love how the system verifies tenant details before they reach
-                    out</i></p>
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings">
+                <img src="images/star.png" width=20px alt="star ratings">
+                <img src="images/star.png" width=20px alt="star ratings">
+                <img src="images/star.png" width=20px alt="star ratings">
+                <p><b>Prettyjane says</b>: <i> As a Corp member, i was worried about being scammed but this platform
+                        gave me
+                        verified landlord contacts.</i></p>
 
 
 
-        </div>
+            </div>
 
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Bluetick says</b>: <i> Fast response from landlords, and I found a home within a week of signing
-                    up</i></p>
-
-
-
-        </div>
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Finegal says</b>: <i> “Moving for service was daunting, but finding accommodation was smooth
+                        thanks to
+                        this app.</i></p>
 
 
 
+            </div>
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Papajay says</b>: <i> As a landlord, I love how the system verifies tenant details before they
+                        reach
+                        out</i></p>
+
+
+
+            </div>
+
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Bluetick says</b>: <i> Fast response from landlords, and I found a home within a week of signing
+                        up</i></p>
+
+
+
+            </div>
 
 
 
 
-    </div>
-
-    <div class="row">
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Hammed says</b>: <i> I dont even need the help of support in order to navigate my way around the app.
-                    Super helpful i must say</i></p>
-
-
-
-        </div>
-        <div class='col-lg-2 col-md-4 col-sm-6 padding:2px'>
-
-
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Braggadicious says</b>: <i> The payment history section gives me confidence — I always know my rent
-                    status</i></p>
 
 
 
         </div>
 
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings">
-            <img src="images/star.png" width=20px alt="star ratings">
-            <img src="images/star.png" width=20px alt="star ratings">
-            <img src="images/star.png" width=20px alt="star ratings">
-            <p><b>Blessing says</b>: <i> No hidden fees, no middlemen — just me and the landlord. Perfect</i></p>
+        <div class="row">
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Hammed says</b>: <i> I dont even need the help of support in order to navigate my way around the
+                        app.
+                        Super helpful i must say</i></p>
+
+
+
+            </div>
+            <div class='col-lg-2 col-md-4 col-sm-6 padding:2px'>
+
+
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Braggadicious says</b>: <i> The payment history section gives me confidence — I always know my
+                        rent
+                        status</i></p>
+
+
+
+            </div>
+
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings">
+                <img src="images/star.png" width=20px alt="star ratings">
+                <img src="images/star.png" width=20px alt="star ratings">
+                <img src="images/star.png" width=20px alt="star ratings">
+                <p><b>Blessing says</b>: <i> No hidden fees, no middlemen — just me and the landlord. Perfect</i></p>
+
+
+
+            </div>
+
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Richikid says</b>: <i> I could easily filter houses by price and other notable attributes from my
+                        CDS
+                        venue. Super helpful</i></p>
+
+
+
+            </div>
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Blossom says</b>: <i> The platform is user-friendly. Even my parents could navigate it easily</i>
+                </p>
+
+
+
+            </div>
+
+            <div class='col-lg-2 col-md-4 col-sm-6'>
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
+                <p><b>Prettybetty says</b>: <i> Rent collection has become more transparent and organized. No more messy
+                        spreadsheets</i></p>
+
+
+
+            </div>
+
+
+
+
 
 
 
         </div>
-
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Richikid says</b>: <i> I could easily filter houses by price and other notable attributes from my CDS
-                    venue. Super helpful</i></p>
-
-
-
-        </div>
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Blossom says</b>: <i> The platform is user-friendly. Even my parents could navigate it easily</i></p>
-
-
-
-        </div>
-
-        <div class='col-lg-2 col-md-4 col-sm-6'>
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <img src="images/star.png" width=20px alt="star ratings" class="img-fluid">
-            <p><b>Prettybetty says</b>: <i> Rent collection has become more transparent and organized. No more messy
-                    spreadsheets</i></p>
-
-
-
-        </div>
-
-
-
-
-
-
-
-    </div>
 
         <div class="row">
             <div class='col-lg-2 col-md-4 col-sm-6'>
@@ -610,7 +622,7 @@ include_once("header.php");
     <div class="row mt-5">
         <?php
 
-        include_once "footer.php";
+        include_once __DIR__ . "/footer.php"
 
 
         ?>

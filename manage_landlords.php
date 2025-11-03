@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-$base_url = 'http://localhost/mylandlord';
+$base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+include_once __DIR__ . "/header.php";
+
+
 
 // Redirect if not logged in
 if (!isset($_SESSION["admin_id"])) {
@@ -9,7 +13,7 @@ if (!isset($_SESSION["admin_id"])) {
     exit();
 }
 
-include_once "header.php";
+
 include_once "classes/Admin.php";
 
 $admin = new Admin();
@@ -110,4 +114,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete_id"])) {
     <a href="admin_dashboard.php" class="btn btn-success mt-3">← Back to Dashboard</a>
 </div>
 
-<?php include_once "footer.php"; ?>
+<?php  include_once __DIR__ . "/footer.php" ?>
