@@ -10,7 +10,7 @@
 .env
 
 # ⚙️ Vendor and dependency files (if using Composer)
-vendor/
+/vendor/
 
 # 🧾 Logs and temp files
 *.log

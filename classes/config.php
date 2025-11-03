@@ -1,15 +1,15 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 
-if (file_exists(__DIR__ . '/../.env')) {
-    $env = parse_ini_file(__DIR__ . '/../.env');
-    foreach ($env as $key => $value) {
-        putenv("$key=$value");
-    }
-}
+use Dotenv\Dotenv;
 
-// 2️⃣ Define constants (works locally or in Railway)
-define('DBHOST', getenv('DBHOST') ?: 'localhost');
-define('DBNAME', getenv('DBNAME') ?: 'mylandlord');
-define('DBUSER', getenv('DBUSER') ?: 'root');
-define('DBPASS', getenv('DBPASS') ?: '');
+// Load .env file
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+// Define constants from .env variables
+define('DBHOST', $_ENV['DBHOST']);
+define('DBNAME', $_ENV['DBNAME']);
+define('DBUSER', $_ENV['DBUSER']);
+define('DBPASS', $_ENV['DBPASS']);
 ?>
