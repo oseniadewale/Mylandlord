@@ -13,8 +13,12 @@ class Db
     //a method that connects to the database
     public function connect(){
         // $dsn ="mysql:dbhost=$this->dbhost;dbname=$this->dbname";
-       $dsn = "mysql:host=$this->dbhost;port=3306;dbname=$this->dbname;charset=utf8mb4";
-        $option = [
+    //    $dsn = "mysql:host=$this->dbhost;port=3306;dbname=$this->dbname;charset=utf8mb4";
+       
+    $dsn = "mysql:host={$this->dbhost};dbname={$this->dbname};charset=utf8mb4";
+
+       
+       $option = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ];
 
