@@ -16,4 +16,8 @@ define('DBPORT', getenv('DBPORT') ?: $_ENV['DBPORT'] ?? '3306');
 define('DBNAME', getenv('DBNAME') ?: $_ENV['DBNAME'] ?? 'your_local_db_name');
 define('DBUSER', getenv('DBUSER') ?: $_ENV['DBUSER'] ?? 'root');
 define('DBPASS', getenv('DBPASS') ?: $_ENV['DBPASS'] ?? '');
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 5377032 (Save local changes before pulling)
