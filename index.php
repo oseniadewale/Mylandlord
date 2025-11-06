@@ -1,5 +1,10 @@
 <?php
 
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 // DB debug route — remove after verifying
 if (isset($_GET['test']) && $_GET['test'] === 'db') {
     require_once __DIR__ . '/classes/config.php';
