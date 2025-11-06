@@ -1,11 +1,7 @@
 <?php
 
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
-// DB debug route — remove after verifying
+// Place this block as the VERY FIRST thing in index.php
 if (isset($_GET['test']) && $_GET['test'] === 'db') {
     require_once __DIR__ . '/classes/config.php';
     require_once __DIR__ . '/classes/Db.php';
@@ -25,6 +21,7 @@ if (isset($_GET['test']) && $_GET['test'] === 'db') {
     exit;
 }
 
+// The rest of your index.php follows here
 
 
 
