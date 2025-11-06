@@ -1,4 +1,4 @@
-<?php
+
 
 <?php
 // Place this block as the VERY FIRST thing in index.php
