@@ -3,6 +3,10 @@
 
 
 
+
+
+
+
 $page_title = "Home Page"; // or "Login", "Dashboard", etc.);
 $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
