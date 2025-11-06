@@ -1,5 +1,26 @@
 <?php
 
+// DB debug route — remove after verifying
+if (isset($_GET['test']) && $_GET['test'] === 'db') {
+    require_once __DIR__ . '/classes/config.php';
+    require_once __DIR__ . '/classes/Db.php';
+    $db = new Db();
+    try {
+        $pdo = $db->connect();
+        echo "<h2 style='color:green'>✅ Database connection successful!</h2>";
+        $stmt = $pdo->query("SHOW TABLES");
+        echo "<h4>Tables:</h4><ul>";
+        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+            echo "<li>" . htmlspecialchars($row[0]) . "</li>";
+        }
+        echo "</ul>";
+    } catch (Exception $e) {
+        echo "<h2 style='color:red'>❌ Connection failed:</h2> " . $e->getMessage();
+    }
+    exit;
+}
+
+
 
 
 
