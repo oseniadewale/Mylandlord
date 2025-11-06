@@ -1,41 +1,16 @@
 
-
 <?php
-// Place this block as the VERY FIRST thing in index.php
-if (isset($_GET['test']) && $_GET['test'] === 'db') {
-    require_once __DIR__ . '/classes/config.php';
-    require_once __DIR__ . '/classes/Db.php';
-    $db = new Db();
-    try {
-        $pdo = $db->connect();
-        echo "<h2 style='color:green'>✅ Database connection successful!</h2>";
-        $stmt = $pdo->query("SHOW TABLES");
-        echo "<h4>Tables:</h4><ul>";
-        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            echo "<li>" . htmlspecialchars($row[0]) . "</li>";
-        }
-        echo "</ul>";
-    } catch (Exception $e) {
-        echo "<h2 style='color:red'>❌ Connection failed:</h2> " . $e->getMessage();
-    }
-    exit;
-}
-
-// The rest of your index.php follows here
-
-
-
-<?php
+// Enable error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/error_log.txt'); // write errors to a file
 
+// DB TEST MODE — trigger by visiting: ?test=db
 if (isset($_GET['test']) && $_GET['test'] === 'db') {
     require_once __DIR__ . '/classes/config.php';
     require_once __DIR__ . '/classes/Db.php';
     $db = new Db();
-
     try {
         $pdo = $db->connect();
         echo "<h2 style='color:green'>✅ Database connection successful!</h2>";
@@ -48,28 +23,15 @@ if (isset($_GET['test']) && $_GET['test'] === 'db') {
     } catch (Throwable $e) {
         echo "<h2 style='color:red'>❌ Connection failed:</h2> " . $e->getMessage();
     }
-
     exit;
 }
-?>
 
-
-
-
-
-$page_title = "Home Page"; // or "Login", "Dashboard", etc.);
+// Normal homepage code
+$page_title = "Home Page";
 $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
 include_once __DIR__ . "/header.php";
-
-
-
-
-
 ?>
-
-
-
 
 <style>
     .colA p {
