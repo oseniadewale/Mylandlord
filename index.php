@@ -25,6 +25,33 @@ if (isset($_GET['test']) && $_GET['test'] === 'db') {
 
 
 
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/error_log.txt'); // write errors to a file
+
+if (isset($_GET['test']) && $_GET['test'] === 'db') {
+    require_once __DIR__ . '/classes/config.php';
+    require_once __DIR__ . '/classes/Db.php';
+    $db = new Db();
+
+    try {
+        $pdo = $db->connect();
+        echo "<h2 style='color:green'>✅ Database connection successful!</h2>";
+        $stmt = $pdo->query("SHOW TABLES");
+        echo "<h4>Tables:</h4><ul>";
+        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
+            echo "<li>" . htmlspecialchars($row[0]) . "</li>";
+        }
+        echo "</ul>";
+    } catch (Throwable $e) {
+        echo "<h2 style='color:red'>❌ Connection failed:</h2> " . $e->getMessage();
+    }
+
+    exit;
+}
+?>
 
 
 
