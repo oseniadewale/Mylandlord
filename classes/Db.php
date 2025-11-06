@@ -1,7 +1,8 @@
-<?php 
+<?php
 require_once "config.php";
 
-class Db {
+class Db
+{
     private $dbhost = DBHOST;
     private $dbport = DBPORT;
     private $dbname = DBNAME;
@@ -10,13 +11,18 @@ class Db {
 
     public function connect(){
         $dsn = "mysql:host={$this->dbhost};port={$this->dbport};dbname={$this->dbname};charset=utf8mb4";
-        $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-        try {
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ];
+
+        try{
             $con = new PDO($dsn, $this->dbuser, $this->dbpass, $options);
             return $con;
-        } catch (PDOException $e) {
-            echo "Error dey: " . $e->getMessage();
+        } catch(PDOException $e){
+            // Do not expose credentials in production — but useful while debugging
+            die("Database connection failed: " . $e->getMessage());
         }
     }
 }
