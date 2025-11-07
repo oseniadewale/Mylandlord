@@ -19,7 +19,7 @@ class Db
         ];
 
         try{
-            $con = new PDO($dsn, $this->dbuser, $this->dbpass, $options);
+            $con = new PDO($dsn, $this->DBUSER, $this->DBPASS, $options);
             return $con;
         } catch(PDOException $e){
             // Do not expose credentials in production — but useful while debugging
