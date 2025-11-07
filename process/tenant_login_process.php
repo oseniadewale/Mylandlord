@@ -37,7 +37,12 @@ if ($tenant_data['profile_completed'] == 0) {
     exit();
 } else {
     
-    header("Location: ../tenant_dashboard.php");
+   
+    header(Location: __DIR__ "./../tenant_dashboard.php")
+    
+    
+    ");
+     
     exit();
 }
 
