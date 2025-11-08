@@ -11,11 +11,11 @@ if (file_exists($envPath . '.env')) {
 }
 
 // Use environment variables (Railway auto-provides these)
-define('DBHOST', getenv('DBHOST') ?: 'mysql.railway.internal');
-define('DBPORT', getenv('DBPORT') ?: '3306');
+define('DBHOST', getenv('DBHOST') ?: 'ballast.proxy.rlwy.net');
+define('DBPORT', getenv('DBPORT') ?: '35446');
 define('DBNAME', getenv('DBNAME') ?: 'railway');
 define('DBUSER', getenv('DBUSER') ?: 'root');
-define('DBPASS', getenv('DBPASS') ?: 'rpQRlkzRbdaWrTWysQrbHHIEcTNKXCGb');
+define('DBPASS', getenv('DBPASS') ?: 'GcYDdKWnzRwiZLLRoMWqlhNaEIqRBqUn');
 
 ?>
 
