@@ -1,4 +1,4 @@
-// <?php
+
 // include_once __DIR__ . '/../vendor/autoload.php';
 
 // use Dotenv\Dotenv;
@@ -20,7 +20,7 @@
 // define('DBNAME', getenv('DBNAME') ?: 'railway');
 // define('DBUSER', getenv('DBUSER') ?: 'root');
 // define('DBPASS', getenv('DBPASS') ?: 'GcYDdKWnzRwiZLLRoMWqlhNaEIqRBqUn');
-// ?>
+
 
 <?php
 define('DBHOST', 'ballast.proxy.rlwy.net');
