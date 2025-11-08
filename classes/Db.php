@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/config.php';
+include_once __DIR__ . '/config.php';
 
 class Db
 {
@@ -18,11 +18,11 @@ class Db
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ];
 
-        try{
-            $con = new PDO($dsn, $this->DBUSER, $this->DBPASS, $options);
+        try {
+            // ✅ Use correct property names (lowercase)
+            $con = new PDO($dsn, $this->dbuser, $this->dbpass, $options);
             return $con;
-        } catch(PDOException $e){
-            // Do not expose credentials in production — but useful while debugging
+        } catch (PDOException $e) {
             die("Database connection failed: " . $e->getMessage());
         }
     }
