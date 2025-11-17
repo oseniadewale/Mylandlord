@@ -1,5 +1,5 @@
 <?php
-include_once "Db.php";
+include_once __DIR__."/Db.php";
 
 class LandlordSignup2 extends Db {
     private $dbconn;
