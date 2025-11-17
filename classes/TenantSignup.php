@@ -1,6 +1,7 @@
 <?php
-include_once "Db.php";
-include_once "../helpers/Db_Unique.php";
+
+include_once __DIR__ ."/Db.php";
+include_once __DIR__."../helpers/Db_Unique.php";
 
 class TenantSignup extends Db {
 
