@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // include_once $_SERVER['DOCUMENT_ROOT'] . "/mylandlord/classes/landlord.php";
-include_once __DIR__ . "/../classes/Landlord.php";
+include_once __DIR__ ."/../classes/Landlord.php";
 
 if (isset($_POST["btn_landlord_login"])) {
     $username = trim($_POST["landlord_username"]);
