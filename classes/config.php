@@ -1,10 +1,7 @@
-
 <?php
-define('DBHOST', 'mysql.railway.internal');
-define('DBPORT', '3306');
-define('DBNAME', 'railway');
-define('DBUSER', 'root');
-define('DBPASS', 'bbNTSXefERHPQNbEOZHoiYcbfJtCPjTw');
+define('DBHOST', getenv('DBHOST'));
+define('DBPORT', getenv('DBPORT'));
+define('DBNAME', getenv('DBNAME'));
+define('DBUSER', getenv('DBUSER'));
+define('DBPASS', getenv('DBPASS'));
 ?>
-
-
